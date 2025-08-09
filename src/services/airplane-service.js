@@ -34,7 +34,21 @@ function getAllAirplanes() {
     );
   }
 }
+
+function getAirplane(id) {
+  try {
+    const airplain = airplaneRepo.get(id);
+    return airplain;
+  } catch (error) {
+    throw new AppError(
+      "Cannot retrieve airplane object",
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
+  }
+}
+
 module.exports = {
   createAirplane,
   getAllAirplanes,
+  getAirplane,
 };
