@@ -11,5 +11,6 @@ router.post(
 
 router.get("/", airplaneController.getAllAirplanes);
 router.get("/:id", airplaneController.getAirplane);
+router.delete("/:id", airplaneController.destroyAirplane);
 
 module.exports = router;

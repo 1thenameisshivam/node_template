@@ -4,9 +4,9 @@ const { airplaneRepository } = require("../repositories");
 
 const airplaneRepo = new airplaneRepository();
 
-function createAirplane(data) {
+async function createAirplane(data) {
   try {
-    const airplane = airplaneRepo.create(data);
+    const airplane = await airplaneRepo.create(data);
     return airplane;
   } catch (error) {
     if (error.name === "SequelizeValidationError") {
@@ -23,9 +23,9 @@ function createAirplane(data) {
   }
 }
 
-function getAllAirplanes() {
+async function getAllAirplanes() {
   try {
-    const airplanes = airplaneRepo.getAll();
+    const airplanes = await airplaneRepo.getAll();
     return airplanes;
   } catch (error) {
     throw new AppError(
@@ -35,13 +35,36 @@ function getAllAirplanes() {
   }
 }
 
-function getAirplane(id) {
+async function getAirplane(id) {
   try {
-    const airplain = airplaneRepo.get(id);
-    return airplain;
+    const airplane = await airplaneRepo.get(id);
+    return airplane;
   } catch (error) {
+    if (error.statusCode === StatusCodes.NOT_FOUND) {
+      throw new AppError(
+        "Airplane you requested is not found",
+        StatusCodes.NOT_FOUND
+      );
+    }
     throw new AppError(
       "Cannot retrieve airplane object",
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
+  }
+}
+
+async function destroyAirplane(id) {
+  try {
+    await airplaneRepo.destroy(id);
+  } catch (error) {
+    if (error.statusCode === StatusCodes.NOT_FOUND) {
+      throw new AppError(
+        "Airplane you requested to delete is not found",
+        StatusCodes.NOT_FOUND
+      );
+    }
+    throw new AppError(
+      "Cannot delete airplane object",
       StatusCodes.INTERNAL_SERVER_ERROR
     );
   }
@@ -51,4 +74,5 @@ module.exports = {
   createAirplane,
   getAllAirplanes,
   getAirplane,
+  destroyAirplane,
 };
