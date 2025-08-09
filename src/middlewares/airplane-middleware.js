@@ -19,6 +19,24 @@ function validateCreateRequest(req, res, next) {
   next();
 }
 
+function validateUpdateRequest(req, res, next) {
+  if (!req.body?.modelNumber && !req.body?.capacity) {
+    ErrorResponse.message =
+      "At least one field (model number or capacity) must be provided";
+    ErrorResponse.error = new AppError(
+      [
+        {
+          explanation: "Model number or capacity must be provided for update",
+        },
+      ],
+      StatusCodes.BAD_REQUEST
+    );
+    return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
+  }
+  next();
+}
+
 module.exports = {
   validateCreateRequest,
+  validateUpdateRequest,
 };

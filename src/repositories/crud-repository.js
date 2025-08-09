@@ -1,5 +1,4 @@
 const { StatusCodes } = require("http-status-codes");
-const { logger } = require("../config");
 const { AppError } = require("../errors");
 
 class crudRepository {
@@ -41,6 +40,9 @@ class crudRepository {
         id: id,
       },
     });
+    if (!response) {
+      throw new AppError("No record found", StatusCodes.NOT_FOUND);
+    }
     return response;
   }
 }
