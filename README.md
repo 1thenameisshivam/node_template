@@ -130,13 +130,19 @@ Follow these steps to set up the project on your local machine:
 1. Download this template from GitHub and open it in your favorite text editor.
 
 2. Go inside the project folder path and execute the following command:
-   npm install
+
+```bash
+ npm install
+```
 
 3. In the root directory, create a `.env` file and add the following environment variable:
    PORT=<port number of your choice>
 
 4. Go inside the `src` folder and execute the following command:
-   npx sequelize init
+
+```bash
+ npx sequelize init
+```
 
 5. By executing the above command, you will get:
    - A `migrations` folder
@@ -146,4 +152,7 @@ Follow these steps to set up the project on your local machine:
 Your project is now set up and ready for development.
 
 6. TO run the server:
-   npm run dev
+
+```bash
+ npm run dev
+```
