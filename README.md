@@ -11,7 +11,7 @@ Feel free to customize it according to your project requirements.
 All the main source code resides inside the `src/` folder.  
 **Note:** Tests should be kept in a separate `tests/` directory for better organization.
 
-````plaintext
+```plaintext
 src/
 │
 ├── configs/ # Configuration files for libraries, modules, and environment setup
@@ -119,4 +119,4 @@ flowchart TD
     F --> E
     E --> D
     D --> H[API Response]
-````
+```
