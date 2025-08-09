@@ -11,6 +11,7 @@ Feel free to customize it according to your project requirements.
 All the main source code resides inside the `src/` folder.  
 **Note:** Tests should be kept in a separate `tests/` directory for better organization.
 
+````plaintext
 src/
 │
 ├── configs/ # Configuration files for libraries, modules, and environment setup
@@ -20,6 +21,7 @@ src/
 ├── repositories/ # Database interaction layer
 ├── services/ # Business logic layer
 └── utils/ # Helper functions, utilities, and custom error classes
+```
 
 ---
 
@@ -27,7 +29,7 @@ src/
 
 ### **1. configs/**
 
-This folder contains everything related to configuration or setup of libraries/modules.  
+This folder contains everything related to configuration or setup of libraries/modules.
 Examples:
 
 - **dotenv** setup for environment variables (`server-config.js`).
@@ -117,4 +119,4 @@ flowchart TD
     F --> E
     E --> D
     D --> H[API Response]
-```
+````
